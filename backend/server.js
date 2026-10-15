@@ -6,7 +6,18 @@ require("dotenv").config();
 
 
 const admin = require("firebase-admin");
-const serviceAccount = require("./firebase-service-account.json");
+const fs = require("fs");
+const path = require("path");
+
+const renderSecretPath = "/etc/secrets/firebase-service-account.json";
+
+const serviceAccountPath = fs.existsSync(renderSecretPath)
+  ? renderSecretPath
+  : path.join(__dirname, "firebase-service-account.json");
+
+const serviceAccount = JSON.parse(
+  fs.readFileSync(serviceAccountPath, "utf8")
+);
 
 
 admin.initializeApp({
