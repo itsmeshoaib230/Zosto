@@ -1,648 +1,426 @@
-
-import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Container,
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Card,
-  CardContent,
-  Badge,
-  IconButton,
-  InputAdornment,
-  Chip,
-  Grid,
-  Drawer,
-  Divider,
-} from "@mui/material";
-
-import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-
+import React from "react";
 import "./Home.css";
 
-const products = [
+const features = [
   {
-    id: 1,
-    name: "Rice 25 kg",
-    price: 1400,
-    category: "Groceries",
-    emoji: "🌾",
-    tag: "Popular",
-    color: "#fff0d5",
+    icon: "📦",
+    title: "Inventory Management",
+    description:
+      "Manage your products, monitor stock levels, and keep your inventory organized.",
   },
   {
-    id: 2,
-    name: "Pens Box",
-    price: 120,
-    category: "Stationary",
-    emoji: "🖊️",
-    tag: "Bestseller",
-    color: "#e5edff",
+    icon: "🔔",
+    title: "Smart Stock Alerts",
+    description:
+      "Get notified when products run low and avoid unexpected stockouts.",
   },
   {
-    id: 3,
-    name: "Notebook Pack",
-    price: 180,
-    category: "Stationary",
-    emoji: "📒",
-    tag: "Value pack",
-    color: "#f3e8ff",
+    icon: "📊",
+    title: "Sales Tracking",
+    description:
+      "Track daily sales, understand business performance, and monitor growth.",
   },
   {
-    id: 4,
-    name: "Cleaning Supplies",
-    price: 250,
-    category: "Household",
-    emoji: "🧴",
-    tag: "Essentials",
-    color: "#dff7ed",
+    icon: "🤝",
+    title: "Supplier Management",
+    description:
+      "Connect with suppliers and simplify your ordering process.",
   },
   {
-    id: 5,
-    name: "Toor Dal 5 kg",
-    price: 650,
-    category: "Groceries",
-    emoji: "🫘",
-    tag: "Popular",
-    color: "#fff1df",
+    icon: "📈",
+    title: "Reports & Analytics",
+    description:
+      "Understand your business with clear reports and useful insights.",
   },
   {
-    id: 6,
-    name: "Soap Pack",
-    price: 160,
-    category: "Household",
-    emoji: "🧼",
-    tag: "Daily use",
-    color: "#e1f5fe",
-  },
-  {
-    id: 7,
-    name: "Cooking Oil 5 L",
-    price: 750,
-    category: "Groceries",
-    emoji: "🫒",
-    tag: "Daily needs",
-    color: "#fff8cc",
-  },
-  {
-    id: 8,
-    name: "School Supplies Kit",
-    price: 299,
-    category: "Stationary",
-    emoji: "✏️",
-    tag: "Value pack",
-    color: "#ffe4ec",
+    icon: "🏪",
+    title: "Business Dashboard",
+    description:
+      "Access important inventory and sales information from one place.",
   },
 ];
 
 function Home() {
-  const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [cart, setCart] = useState([]);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [authMode, setAuthMode] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = `${product.name} ${product.category}`
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const matchesCategory =
-      selectedCategory === "All" ||
-      product.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
-  });
-
-  const addToCart = (product) => {
-    setCart((previous) => [...previous, product]);
-  };
-
-  const removeFromCart = (indexToRemove) => {
-    setCart((previous) =>
-      previous.filter((_, index) => index !== indexToRemove)
-    );
-  };
-
-  const total = cart.reduce(
-    (sum, product) => sum + product.price,
-    0
-  );
-
-  const closeAuth = () => {
-    setAuthMode("");
-    setEmail("");
-    setPassword("");
-  };
-
   return (
-    <Box className="zosto-app">
-      {/* NAVBAR */}
-      <AppBar position="sticky" elevation={0} className="navbar">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters className="nav-toolbar">
-            {/* LOGO */}
-            <Typography
-              variant="h4"
-              className="logo"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              zosto<span>.</span>
-            </Typography>
+    <main className="zosto-home">
+      {/* Navbar */}
+      <header className="zosto-navbar">
+        <a href="#home" className="zosto-logo">
+          <span className="zosto-logo-icon">▦</span>
+          <span>
+            Zos<span className="zosto-logo-highlight">to</span>
+          </span>
+        </a>
 
-            {/* SEARCH BETWEEN LOGO AND LOGIN */}
-           
-{/* SEARCH BOX */}
-<Box className="nav-search">
-  <TextField
-    fullWidth
-    size="small"
-    value={search}
-    onChange={(event) => setSearch(event.target.value)}
-    placeholder="Search products..."
-    slotProps={{
-      input: {
-        startAdornment: (
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        ),
-      },
-    }}
-  />
-</Box>
+        <nav className="zosto-nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-{/* LOCATION BUTTON */}
-<Button
-  className="location-btn"
-  startIcon={<LocationOnIcon />}
-  onClick={() => {
-    if (!navigator.geolocation) {
-      alert("Location is not supported by your browser.");
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        alert(
-          `Latitude: ${position.coords.latitude}\nLongitude: ${position.coords.longitude}`
-        );
-      },
-      () => alert("Please allow location access in your browser.")
-    );
-  }}
->
-  Location
-</Button>
-
-
-            {/* LOGIN */}
-            <Button
-              className="login-btn"
-              onClick={() => setAuthMode("Login")}
-            >
-              Login
-            </Button>
-
-            {/* SIGN UP */}
-            <Button
-              variant="contained"
-              className="signup-btn"
-              onClick={() => setAuthMode("Sign Up")}
-            >
-              Sign Up
-            </Button>
-
-            {/* CART */}
-            <IconButton
-              className="cart-btn"
-              aria-label="Open shopping cart"
-              onClick={() => setCartOpen(true)}
-            >
-              <Badge badgeContent={cart.length} color="warning">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-
-            {/* MOBILE MENU */}
-            <IconButton
-              className="mobile-menu"
-              aria-label="Open menu"
-              onClick={() => setMenuOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </Container>
-      </AppBar>
-
-      {/* MOBILE MENU DRAWER */}
-      <Drawer
-        anchor="right"
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-      >
-        <Box className="mobile-drawer">
-          <Box className="drawer-heading">
-            <Typography variant="h5" className="logo">
-              zosto<span>.</span>
-            </Typography>
-
-            <IconButton onClick={() => setMenuOpen(false)}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-
-          <Divider />
-
-          <Button
-            fullWidth
-            onClick={() => {
-              setMenuOpen(false);
-              setAuthMode("Login");
-            }}
+        <div className="zosto-nav-actions">
+          <select
+            className="zosto-language"
+            aria-label="Select language"
+            defaultValue="English"
           >
+            <option value="English">English</option>
+            <option value="Telugu">తెలుగు</option>
+            <option value="Hindi">हिन्दी</option>
+          </select>
+
+          <a href="/login/shopkeeper" className="zosto-login-link">
             Login
-          </Button>
+          </a>
 
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={() => {
-              setMenuOpen(false);
-              setAuthMode("Sign Up");
-            }}
-          >
-            Sign Up
-          </Button>
+          <a href="/signup" className="zosto-nav-cta">
+            Get Started
+          </a>
+        </div>
+      </header>
 
-          <Button
-            fullWidth
-            onClick={() => {
-              setMenuOpen(false);
-              setCartOpen(true);
-            }}
-          >
-            <ShoppingCartIcon sx={{ mr: 1 }} />
-            View Cart ({cart.length})
-          </Button>
-        </Box>
-      </Drawer>
+      {/* Hero Section */}
+      <section className="zosto-hero" id="home">
+        <div className="zosto-hero-content">
+          <div className="zosto-badge">
+            <span className="zosto-badge-dot"></span>
+            SMART INVENTORY. SMARTER BUSINESS.
+          </div>
 
-      {/* MAIN CONTENT */}
-      <Container maxWidth="xl" className="main-container">
-        {/* HERO */}
-        <Box className="hero">
-          <Box className="hero-content">
-            <Chip
-              label="YOUR DAILY SHOPPING PARTNER"
-              className="hero-chip"
-            />
+          <h1>
+            Smart Inventory
+            <br />
+            for Every <span>Shop.</span>
+          </h1>
 
-            <Typography variant="h2" className="hero-title">
-              Everything you need,
-              <br />
-              in one place.
-            </Typography>
+          <p className="zosto-hero-description">
+            Manage stock, track sales, connect with suppliers, and grow your
+            business with Zosto.
+          </p>
 
-            <Typography className="hero-description">
-              Groceries, stationary and daily essentials.
-              Shop your everyday favourites at Zosto.
-            </Typography>
+          <div className="zosto-hero-buttons">
+            <a href="/signup" className="zosto-btn-primary">
+              Get Started <span>→</span>
+            </a>
 
-            <Button
-              variant="contained"
-              className="hero-button"
-              onClick={() =>
-                document
-                  .getElementById("products")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Explore Products →
-            </Button>
-          </Box>
+            <a href="#features" className="zosto-btn-secondary">
+              Explore Features <span>↗</span>
+            </a>
+          </div>
 
-          <Box className="hero-art">
-            <div className="hero-circle">🛍️</div>
-            <div className="floating-item item-one">🌾</div>
-            <div className="floating-item item-two">🖊️</div>
-            <div className="floating-item item-three">📦</div>
-          </Box>
-        </Box>
+          <div className="zosto-hero-trust">
+            <div className="zosto-trust-icon">✓</div>
+            <span>Simple to use</span>
 
-        {/* CATEGORIES */}
-        <Box className="category-section">
-          <Typography variant="h5" className="section-title">
-            Shop by category
-          </Typography>
+            <div className="zosto-trust-divider"></div>
 
-          <Box className="category-list">
-            {[
-              { name: "All", emoji: "🛍️" },
-              { name: "Groceries", emoji: "🌾" },
-              { name: "Stationary", emoji: "✏️" },
-              { name: "Household", emoji: "🧹" },
-            ].map((category) => (
-              <Button
-                key={category.name}
-                className={`category-button ${
-                  selectedCategory === category.name ? "active" : ""
-                }`}
-                onClick={() => setSelectedCategory(category.name)}
-              >
-                <span>{category.emoji}</span>
-                {category.name}
-              </Button>
-            ))}
-          </Box>
-        </Box>
+            <div className="zosto-trust-icon">✓</div>
+            <span>Built for businesses</span>
+          </div>
+        </div>
 
-        {/* PRODUCTS */}
-        <Box id="products" className="products-section">
-          <Box className="products-heading">
-            <Box>
-              <Typography variant="h4" className="section-title">
-                Explore products
-              </Typography>
+        {/* Dashboard Preview */}
+        <div className="zosto-hero-visual">
+          <div className="zosto-decoration zosto-decoration-one"></div>
+          <div className="zosto-decoration zosto-decoration-two"></div>
 
-              <Typography className="section-subtitle">
-                Find everything you need for everyday life.
-              </Typography>
-            </Box>
+          <div className="zosto-dashboard">
+            <div className="zosto-dashboard-header">
+              <div>
+                <div className="zosto-dashboard-brand">
+                  <span className="zosto-mini-logo">▦</span>
+                  Zosto
+                </div>
+                <p>Business Overview</p>
+              </div>
 
-            <Typography className="product-count">
-              {filteredProducts.length} products
-            </Typography>
-          </Box>
+              <div className="zosto-dashboard-avatar">S</div>
+            </div>
 
-          <Grid container spacing={2.5}>
-            {filteredProducts.map((product) => (
-              <Grid
-                key={product.id}
-                size={{ xs: 6, sm: 4, md: 3 }}
-              >
-                <Card className="product-card">
-                  <Box
-                    className="product-image"
-                    sx={{ backgroundColor: product.color }}
-                  >
-                    <Chip label={product.tag} className="product-tag" />
-                    <span className="product-emoji">
-                      {product.emoji}
-                    </span>
-                  </Box>
+            <div className="zosto-dashboard-welcome">
+              <div>
+                <h3>Good morning! 👋</h3>
+                <p>Here is what's happening in your store.</p>
+              </div>
+            </div>
 
-                  <CardContent className="product-content">
-                    <Typography className="product-category">
-                      {product.category}
-                    </Typography>
+            <div className="zosto-stats-grid">
+              <div className="zosto-stat-card">
+                <div className="zosto-stat-top">
+                  <span>Total Products</span>
+                  <span className="zosto-stat-icon">📦</span>
+                </div>
+                <h2>1,248</h2>
+                <small>Products in inventory</small>
+              </div>
 
-                    <Typography className="product-name">
-                      {product.name}
-                    </Typography>
+              <div className="zosto-stat-card">
+                <div className="zosto-stat-top">
+                  <span>Today's Sales</span>
+                  <span className="zosto-stat-icon">₹</span>
+                </div>
+                <h2>₹12,450</h2>
+                <small className="zosto-positive">Sales overview</small>
+              </div>
 
-                    <Typography className="product-price">
-                      ₹{product.price.toLocaleString("en-IN")}
-                    </Typography>
+              <div className="zosto-stat-card">
+                <div className="zosto-stat-top">
+                  <span>Low Stock</span>
+                  <span className="zosto-stat-icon">⚠️</span>
+                </div>
+                <h2>08</h2>
+                <small className="zosto-warning">Needs attention</small>
+              </div>
 
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      className="add-cart-btn"
-                      startIcon={<AddShoppingCartIcon />}
-                      onClick={() => addToCart(product)}
-                    >
-                      Add to cart
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+              <div className="zosto-stat-card">
+                <div className="zosto-stat-top">
+                  <span>Orders</span>
+                  <span className="zosto-stat-icon">🛒</span>
+                </div>
+                <h2>36</h2>
+                <small>Orders to manage</small>
+              </div>
+            </div>
 
-          {filteredProducts.length === 0 && (
-            <Box className="empty-state">
-              <Typography variant="h6">No products found</Typography>
-              <Typography color="text.secondary">
-                Try another search or category.
-              </Typography>
+            <div className="zosto-dashboard-bottom">
+              <div className="zosto-chart-card">
+                <div className="zosto-chart-heading">
+                  <div>
+                    <h4>Sales Overview</h4>
+                    <p>Weekly performance</p>
+                  </div>
+                  <span className="zosto-chart-period">This week⌄</span>
+                </div>
 
-              <Button
-                onClick={() => {
-                  setSearch("");
-                  setSelectedCategory("All");
-                }}
-              >
-                Clear filters
-              </Button>
-            </Box>
-          )}
-        </Box>
-
-        {/* PROMOTION */}
-        <Box className="promo-banner">
-          <Box>
-            <Typography variant="h5" fontWeight={800}>
-              Your essentials, all together.
-            </Typography>
-
-            <Typography>
-              Discover useful products for home, school and everyday life.
-            </Typography>
-          </Box>
-
-          <Typography className="promo-emoji">🎁</Typography>
-        </Box>
-      </Container>
-
-      {/* FOOTER */}
-      <Box component="footer" className="footer">
-        <Container maxWidth="xl">
-          <Typography variant="h5" className="footer-logo">
-            zosto<span>.</span>
-          </Typography>
-
-          <Typography className="footer-text">
-            Your everyday shopping destination.
-          </Typography>
-
-          <Divider className="footer-divider" />
-
-          <Typography className="copyright">
-            © {new Date().getFullYear()} Zosto. All rights reserved.
-          </Typography>
-        </Container>
-      </Box>
-
-      {/* CART DRAWER */}
-      <Drawer
-        anchor="right"
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-      >
-        <Box className="cart-drawer">
-          <Box className="drawer-heading">
-            <Typography variant="h5" fontWeight={800}>
-              Your Cart ({cart.length})
-            </Typography>
-
-            <IconButton onClick={() => setCartOpen(false)}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-
-          <Divider />
-
-          {cart.length === 0 ? (
-            <Box className="empty-cart">
-              <ShoppingCartIcon sx={{ fontSize: 55, color: "#94a3b8" }} />
-
-              <Typography variant="h6">
-                Your cart is empty
-              </Typography>
-
-              <Typography color="text.secondary">
-                Add products to get started.
-              </Typography>
-            </Box>
-          ) : (
-            <>
-              <Box className="cart-items">
-                {cart.map((product, index) => (
-                  <Box
-                    className="cart-item"
-                    key={`${product.id}-${index}`}
-                  >
-                    <span className="cart-item-emoji">
-                      {product.emoji}
-                    </span>
-
-                    <Box sx={{ flex: 1 }}>
-                      <Typography fontWeight={700}>
-                        {product.name}
-                      </Typography>
-
-                      <Typography color="text.secondary">
-                        ₹{product.price.toLocaleString("en-IN")}
-                      </Typography>
-                    </Box>
-
-                    <IconButton
-                      aria-label="Remove item"
-                      onClick={() => removeFromCart(index)}
-                    >
-                      <CloseIcon />
-                    </IconButton>
-                  </Box>
-                ))}
-              </Box>
-
-              <Box className="cart-total">
-                <Typography variant="h6" fontWeight={800}>
-                  Total: ₹{total.toLocaleString("en-IN")}
-                </Typography>
-
-                <Button
-                  fullWidth
-                  variant="contained"
-                  onClick={() =>
-                    alert("Connect your checkout page here.")
-                  }
+                <div
+                  className="zosto-chart"
+                  role="img"
+                  aria-label="Illustrative weekly sales chart"
                 >
-                  Proceed to checkout
-                </Button>
+                  {[35, 55, 42, 75, 50, 90, 68].map((height, index) => (
+                    <div className="zosto-chart-column" key={index}>
+                      <div
+                        className={`zosto-chart-bar ${
+                          index === 5 ? "zosto-chart-bar-highlight" : ""
+                        }`}
+                        style={{ height: `${height}%` }}
+                      ></div>
+                    </div>
+                  ))}
+                </div>
 
-                <Button fullWidth onClick={() => setCart([])}>
-                  Clear cart
-                </Button>
-              </Box>
-            </>
-          )}
-        </Box>
-      </Drawer>
+                <div className="zosto-chart-labels">
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                  <span>Sat</span>
+                  <span>Sun</span>
+                </div>
+              </div>
 
-      {/* LOGIN / SIGNUP DIALOG */}
-      {authMode && (
-        <Box className="auth-overlay" onClick={closeAuth}>
-          <Box
-            className="auth-dialog"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <IconButton className="auth-close" onClick={closeAuth}>
-              <CloseIcon />
-            </IconButton>
+              <div className="zosto-alert-card">
+                <h4>Stock Alerts</h4>
 
-            <Typography variant="h4" className="logo">
-              zosto<span>.</span>
-            </Typography>
+                <div className="zosto-alert-item">
+                  <span className="zosto-alert-dot"></span>
+                  <div>
+                    <strong>Rice Bags</strong>
+                    <p>Only 5 units left</p>
+                  </div>
+                </div>
 
-            <Typography variant="h5" fontWeight={800} sx={{ mt: 2 }}>
-              {authMode}
-            </Typography>
+                <div className="zosto-alert-item">
+                  <span className="zosto-alert-dot"></span>
+                  <div>
+                    <strong>Cooking Oil</strong>
+                    <p>Only 3 units left</p>
+                  </div>
+                </div>
 
-            <Typography color="text.secondary" sx={{ mb: 2 }}>
-              {authMode === "Login"
-                ? "Welcome back! Enter your details."
-                : "Create your account to get started."}
-            </Typography>
+                <a href="/login/shopkeeper">View inventory →</a>
+              </div>
+            </div>
+          </div>
 
-            <TextField
-              fullWidth
-              label="Email address"
-              type="email"
-              margin="normal"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
+          <div className="zosto-floating-card">
+            <span className="zosto-floating-icon">✓</span>
+            <div>
+              <strong>Stay organized</strong>
+              <p>Your business, simplified.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <TextField
-              fullWidth
-              label="Password"
-              type="password"
-              margin="normal"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
+      {/* About Section */}
+      <section className="zosto-about" id="about">
+        <div className="zosto-section-label">ABOUT ZOSTO</div>
 
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 2, py: 1.3 }}
-              onClick={() =>
-                alert("Connect a real authentication backend here.")
-              }
-            >
-              {authMode}
-            </Button>
+        <h2>
+          Your business deserves
+          <br />
+          <span>a smarter way.</span>
+        </h2>
 
-            <Button
-              fullWidth
-              sx={{ mt: 1 }}
-              onClick={() =>
-                setAuthMode(authMode === "Login" ? "Sign Up" : "Login")
-              }
-            >
-              {authMode === "Login"
-                ? "New here? Sign up"
-                : "Already have an account? Login"}
-            </Button>
-          </Box>
-        </Box>
-      )}
-    </Box>
+        <p>
+          Zosto brings shopkeepers, suppliers, and businesses together through
+          one simple inventory management platform. Spend less time managing
+          stock and more time growing your business.
+        </p>
+
+        <a href="#features" className="zosto-text-link">
+          Discover Zosto <span>→</span>
+        </a>
+      </section>
+
+      {/* Features Section */}
+      <section className="zosto-features" id="features">
+        <div className="zosto-section-label">WHAT ZOSTO OFFERS</div>
+
+        <h2>
+          Everything you need.
+          <br />
+          <span>All in one place.</span>
+        </h2>
+
+        <p className="zosto-section-description">
+          Powerful tools to simplify everyday inventory management.
+        </p>
+
+        <div className="zosto-features-grid">
+          {features.map((feature, index) => (
+            <article className="zosto-feature-card" key={feature.title}>
+              <div className="zosto-feature-icon">{feature.icon}</div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+              <span className="zosto-feature-number">
+                0{index + 1}
+              </span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="zosto-how-it-works">
+        <div className="zosto-section-label">HOW IT WORKS</div>
+
+        <h2>
+          Three steps to a
+          <br />
+          <span>better business.</span>
+        </h2>
+
+        <div className="zosto-steps-grid">
+          <article className="zosto-step">
+            <span className="zosto-step-number">01</span>
+            <h3>Create your account</h3>
+            <p>
+              Register as a shopkeeper, firm, or supplier to get started.
+            </p>
+          </article>
+
+          <article className="zosto-step">
+            <span className="zosto-step-number">02</span>
+            <h3>Manage your inventory</h3>
+            <p>
+              Organize products, monitor stock, and track your business
+              activity.
+            </p>
+          </article>
+
+          <article className="zosto-step">
+            <span className="zosto-step-number">03</span>
+            <h3>Grow with confidence</h3>
+            <p>
+              Make informed decisions with inventory insights and sales
+              reports.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="zosto-contact" id="contact">
+        <div className="zosto-contact-content">
+          <div className="zosto-section-label">GET IN TOUCH</div>
+
+          <h2>
+            Let's grow your
+            <br />
+            <span>business together.</span>
+          </h2>
+
+          <p>
+            Have questions about Zosto? Send us a message and our team can help
+            you get started.
+          </p>
+        </div>
+
+        <form
+          className="zosto-contact-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            alert("Contact form UI is ready. Connect it to your backend to send messages.");
+          }}
+        >
+          <label htmlFor="zosto-name">Your name</label>
+          <input
+            id="zosto-name"
+            type="text"
+            placeholder="Enter your name"
+            required
+          />
+
+          <label htmlFor="zosto-email">Email address</label>
+          <input
+            id="zosto-email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label htmlFor="zosto-message">Your message</label>
+          <textarea
+            id="zosto-message"
+            placeholder="How can we help?"
+            rows="4"
+            required
+          ></textarea>
+
+          <button type="submit" className="zosto-btn-primary">
+            Send Message <span>→</span>
+          </button>
+        </form>
+      </section>
+
+      {/* Footer */}
+      <footer className="zosto-footer">
+        <a href="#home" className="zosto-logo">
+          <span className="zosto-logo-icon">▦</span>
+          <span>
+            Zos<span className="zosto-logo-highlight">to</span>
+          </span>
+        </a>
+
+        <p>Smarter inventory. Stronger businesses.</p>
+
+        <div className="zosto-footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div className="zosto-footer-bottom">
+          © {new Date().getFullYear()} Zosto. All rights reserved.
+        </div>
+      </footer>
+    </main>
   );
 }
 
-export default Home
+export default Home;

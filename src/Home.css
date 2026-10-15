@@ -1,773 +1,1391 @@
+/* =========================
+   ZOSTO DESIGN SYSTEM
+========================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+.zosto-home {
+  --zosto-green: #079b70;
+  --zosto-dark-green: #07855f;
+  --zosto-light-green: #e9f8f1;
+  --zosto-background: #f7fafc;
+  --zosto-navy: #172b3a;
+  --zosto-muted: #74818c;
+  --zosto-border: #e8edf0;
 
-* {
+  width: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: var(--zosto-background);
+  color: var(--zosto-navy);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.zosto-home *,
+.zosto-home *::before,
+.zosto-home *::after {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+.zosto-home a {
+  color: inherit;
+  text-decoration: none;
 }
 
-body {
-  margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background: #ffffff;
-  color: #172554;
+.zosto-home button,
+.zosto-home input,
+.zosto-home select,
+.zosto-home textarea {
+  font: inherit;
 }
 
-.zosto-app {
-  min-height: 100vh;
-  background: #ffffff;
+.zosto-home a:focus-visible,
+.zosto-home button:focus-visible,
+.zosto-home input:focus-visible,
+.zosto-home select:focus-visible,
+.zosto-home textarea:focus-visible {
+  outline: 3px solid #66cbaa;
+  outline-offset: 4px;
 }
 
-.main-container {
-  background: #ffffff;
+.zosto-home a,
+.zosto-home button {
+  -webkit-tap-highlight-color: transparent;
 }
 
-button,
-input {
-  font-family: inherit;
-}
+/* =========================
+   NAVBAR
+========================= */
 
-.zosto-app {
-  min-height: 100vh;
-}
+.zosto-navbar {
+  width: 100%;
+  min-height: 76px;
+  padding: 14px clamp(18px, 5.5vw, 84px);
 
-/* NAVBAR */
-
-.navbar {
-  background: rgba(255, 255, 255, 0.97) !important;
-  color: #173c8c !important;
-  border-bottom: 1px solid #e8edf5;
-  backdrop-filter: blur(12px);
-}
-
-.nav-toolbar {
-  min-height: 50px !important;
-  height: 50px;
-  display: flex;
-  gap: 16px;
-}
-
-.logo {
-  font-weight: 800 !important;
-  letter-spacing: -2px;
-  color: #173c8c;
-  cursor: pointer;
-  flex-shrink: 0;
-  padding-bottom:0.8rem;
-}
-
-.logo span,
-.footer-logo span {
-  color: #f59e0b;
-}
-
-.nav-search {
-  flex: 0 1 380px;
-  min-width: 150px;
-  max-width: 380px;
-  margin: 0 12px;
-}
-
-.location-btn {
-  color: #173c8c !important;
-  text-transform: none !important;
-  font-weight: 600 !important;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.nav-search .MuiOutlinedInput-root {
-  border-radius: 12px;
-  background: #f7f8fc;
-}
-
-.nav-search .MuiOutlinedInput-root.Mui-focused
-.MuiOutlinedInput-notchedOutline {
-  border-color: #173c8c;
-}
-
-.login-btn {
-  color: #173c8c !important;
-  text-transform: none !important;
-  font-weight: 550 !important;
-  flex-shrink: 0;
-}
-
-.signup-btn {
-  background: #173c8c !important;
-  border-radius: 10px !important;
-  padding: 10px 20px !important;
-  text-transform: none !important;
-  font-weight: 600 !important;
-  flex-shrink: 0;
-}
-
-.cart-btn {
-  color: #173c8c !important;
-  flex-shrink: 0;
-}
-
-.mobile-menu {
-  display: none !important;
-  color: #173c8c !important;
-}
-
-/* MAIN CONTENT */
-
-.main-container {
-  padding-top: 11px;
-  padding-bottom: 65px;
-}
-/* HERO */
-
-.hero {
-  min-height: 360px;
-  padding: 50px 55px;
-  background: linear-gradient(120deg, #173c8c, #2857ae);
-  color:white;
-  border-radius: 26px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  overflow: hidden;
-  gap: 30px;
+  gap: 24px;
+
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #edf1f2;
+  position: relative;
+  z-index: 10;
 }
 
-.hero-content {
-  max-width: 650px;
+.zosto-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  white-space: nowrap;
+}
+
+.zosto-logo-icon {
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--zosto-green);
+  color: white;
+  border-radius: 12px;
+  font-size: 26px;
+}
+
+.zosto-logo-highlight {
+  color: var(--zosto-green);
+}
+
+.zosto-nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 34px);
+}
+
+.zosto-nav-links a,
+.zosto-login-link {
+  color: #53616b;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.zosto-nav-links a:hover,
+.zosto-login-link:hover {
+  color: var(--zosto-green);
+}
+
+.zosto-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.zosto-language {
+  max-width: 115px;
+  padding: 9px 6px;
+  color: #344653;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.zosto-language:hover {
+  border-color: var(--zosto-border);
+}
+
+.zosto-nav-cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 11px 19px;
+  min-height: 42px;
+
+  color: white !important;
+  background: var(--zosto-green);
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.zosto-nav-cta:hover {
+  background: var(--zosto-dark-green);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.zosto-hero {
+  width: 100%;
+  min-height: 610px;
+
+  padding: 65px clamp(20px, 6vw, 92px) 85px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 75px);
+
+  background:
+    radial-gradient(
+      ellipse at 90% 12%,
+      rgba(7, 155, 112, 0.08),
+      transparent 36%
+    ),
+    var(--zosto-background);
+}
+
+.zosto-hero-content {
+  max-width: 570px;
+}
+
+.zosto-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 13px;
+  margin-bottom: 25px;
+
+  border: 1px solid #d4eee2;
+  border-radius: 50px;
+  background: #f0fbf5;
+
+  color: var(--zosto-dark-green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.zosto-badge-dot {
+  width: 8px;
+  height: 8px;
+
+  background: var(--zosto-green);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(7, 155, 112, 0.12);
+}
+
+.zosto-hero h1 {
+  margin: 0;
+
+  font-size: clamp(42px, 5vw, 67px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -2.8px;
+}
+
+.zosto-hero h1 span,
+.zosto-about h2 span,
+.zosto-features h2 span,
+.zosto-how-it-works h2 span,
+.zosto-contact h2 span {
+  color: var(--zosto-green);
+}
+
+.zosto-hero-description {
+  max-width: 460px;
+  margin: 24px 0 28px;
+
+  color: var(--zosto-muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.zosto-hero-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.zosto-btn-primary,
+.zosto-btn-secondary {
+  min-height: 48px;
+  padding: 13px 21px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.zosto-btn-primary {
+  color: white !important;
+  background: var(--zosto-green);
+  border: 1px solid var(--zosto-green);
+  box-shadow: 0 7px 18px rgba(7, 155, 112, 0.16);
+}
+
+.zosto-btn-primary:hover {
+  background: var(--zosto-dark-green);
+  box-shadow: 0 10px 22px rgba(7, 155, 112, 0.22);
+  transform: translateY(-2px);
+}
+
+.zosto-btn-secondary {
+  background: white;
+  border: 1px solid #dce6e4;
+  color: var(--zosto-navy);
+}
+
+.zosto-btn-secondary:hover {
+  border-color: var(--zosto-green);
+  color: var(--zosto-green);
+  transform: translateY(-2px);
+}
+
+.zosto-hero-trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  margin-top: 29px;
+
+  color: #687781;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.zosto-trust-icon {
+  width: 18px;
+  height: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #dcf6e9;
+  color: var(--zosto-green);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.zosto-trust-divider {
+  width: 1px;
+  height: 17px;
+  margin: 0 7px;
+  background: #d9e3e5;
+}
+
+/* =========================
+   DASHBOARD PREVIEW
+========================= */
+
+.zosto-hero-visual {
+  min-width: 0;
+  position: relative;
+  padding: 12px;
+}
+
+.zosto-decoration {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.zosto-decoration-one {
+  width: 130px;
+  height: 130px;
+
+  top: -30px;
+  right: -20px;
+
+  background: rgba(7, 155, 112, 0.10);
+}
+
+.zosto-decoration-two {
+  width: 95px;
+  height: 95px;
+
+  bottom: 0;
+  left: -25px;
+
+  background: rgba(106, 207, 160, 0.16);
+}
+
+.zosto-dashboard {
   position: relative;
   z-index: 1;
-}
 
-.hero-chip {
-  color: white !important;
-  background: #ffffff20 !important;
-  font-weight: 700 !important;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-}
+  width: 100%;
+  max-width: 610px;
+  margin: 0 auto;
+  padding: clamp(17px, 2.5vw, 27px);
 
-.hero-title {
-  font-weight: 900 !important;
-  letter-spacing: -2px !important;
-  line-height: 1.13 !important;
-  font-size: clamp(32px, 4vw, 54px) !important;
-}
-
-.hero-description {
-  color: #dbeafe;
-  line-height: 1.8 !important;
-  margin-top: 18px !important;
-  max-width: 460px;
-}
-
-.hero-button {
-  margin-top: 25px !important;
-  padding: 12px 24px !important;
-  background: #fbbf24 !important;
-  color: #172554 !important;
-  font-weight: 800 !important;
-  text-transform: none !important;
-  border-radius: 10px !important;
-}
-
-.hero-button:hover {
-  background: #f59e0b !important;
-}
-
-.hero-art {
-  width: 270px;
-  height: 250px;
-  position: relative;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-circle {
-  width: 210px;
-  height: 210px;
-  border-radius: 50%;
-  background: #ffffff20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 100px;
-}
-
-.floating-item {
-  position: absolute;
-  width: 65px;
-  height: 65px;
-  border-radius: 18px;
   background: white;
-  box-shadow: 0 10px 30px #102a6030;
+  border: 1px solid #edf1f2;
+  border-radius: 19px;
+
+  box-shadow:
+    0 25px 65px rgba(28, 65, 57, 0.09),
+    0 5px 16px rgba(28, 65, 57, 0.035);
+}
+
+.zosto-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eef1f2;
+}
+
+.zosto-dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.zosto-mini-logo {
+  width: 27px;
+  height: 27px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--zosto-light-green);
+  color: var(--zosto-green);
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.zosto-dashboard-header p,
+.zosto-chart-heading p {
+  margin: 5px 0 0;
+  color: var(--zosto-muted);
+  font-size: 11px;
+}
+
+.zosto-dashboard-avatar {
+  width: 36px;
+  height: 36px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 34px;
+
+  background: #e7f6ed;
+  color: var(--zosto-dark-green);
+  border-radius: 50%;
+  font-weight: 800;
 }
 
-.item-one {
-  top: 0;
-  left: 0;
+.zosto-dashboard-welcome {
+  padding: 19px 0 16px;
 }
 
-.item-two {
-  right: 0;
-  top: 40px;
+.zosto-dashboard-welcome h3 {
+  margin: 0;
+  font-size: 15px;
 }
 
-.item-three {
-  bottom: 0;
-  left: 30px;
+.zosto-dashboard-welcome p {
+  margin: 7px 0 0;
+  color: var(--zosto-muted);
+  font-size: 11px;
+  line-height: 1.6;
 }
 
-/* CATEGORIES */
-
-.category-section {
-  margin-top: 45px;
+.zosto-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.section-title {
-  font-weight: 800 !important;
-  letter-spacing: -0.8px !important;
-  color: #172554;
+.zosto-stat-card {
+  min-width: 0;
+  padding: 15px;
+
+  background: #fbfdfc;
+  border: 1px solid #eaf0ed;
+  border-radius: 12px;
 }
 
-.category-list {
+.zosto-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+
+  color: #75828b;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.zosto-stat-icon {
+  width: 28px;
+  height: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e8f7ef;
+  color: var(--zosto-green);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.zosto-stat-card h2 {
+  margin: 12px 0 5px;
+
+  font-size: clamp(19px, 2.1vw, 25px);
+  letter-spacing: -0.7px;
+}
+
+.zosto-stat-card small {
+  display: block;
+  color: #8a969e;
+  font-size: 10px;
+}
+
+.zosto-stat-card .zosto-positive {
+  color: var(--zosto-green);
+}
+
+.zosto-stat-card .zosto-warning {
+  color: #d08a31;
+}
+
+.zosto-dashboard-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.9fr);
+  gap: 13px;
+  margin-top: 14px;
+}
+
+.zosto-chart-card,
+.zosto-alert-card {
+  min-width: 0;
+  padding: 15px;
+
+  background: white;
+  border: 1px solid #eaf0ed;
+  border-radius: 12px;
+}
+
+.zosto-chart-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.zosto-chart-heading h4,
+.zosto-alert-card h4 {
+  margin: 0;
+  font-size: 12px;
+}
+
+.zosto-chart-period {
+  padding: 5px 6px;
+
+  background: #f4f7f5;
+  border-radius: 5px;
+  color: #63716b;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.zosto-chart {
+  height: 105px;
+  margin-top: 18px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 9px;
+
+  border-bottom: 1px solid #e7eeea;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 25px,
+    #f1f5f2 26px
+  );
+}
+
+.zosto-chart-column {
+  height: 100%;
+  flex: 1;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.zosto-chart-bar {
+  width: min(100%, 19px);
+  min-height: 8px;
+
+  background: #b7e8d1;
+  border-radius: 5px 5px 0 0;
+}
+
+.zosto-chart-bar-highlight {
+  background: var(--zosto-green);
+}
+
+.zosto-chart-labels {
+  display: flex;
+  justify-content: space-around;
+  gap: 3px;
+  padding-top: 8px;
+
+  color: #89958e;
+  font-size: 9px;
+}
+
+.zosto-alert-card h4 {
+  margin-bottom: 18px;
+}
+
+.zosto-alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  padding: 11px 0;
+  border-bottom: 1px solid #f0f2f1;
+}
+
+.zosto-alert-dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 4px;
+  flex-shrink: 0;
+
+  background: #f2b24d;
+  border-radius: 50%;
+}
+
+.zosto-alert-item strong {
+  display: block;
+  font-size: 10px;
+}
+
+.zosto-alert-item p {
+  margin: 5px 0 0;
+  color: var(--zosto-muted);
+  font-size: 9px;
+}
+
+.zosto-alert-card > a {
+  display: inline-block;
+  margin-top: 13px;
+
+  color: var(--zosto-green);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.zosto-floating-card {
+  position: absolute;
+  z-index: 2;
+  left: -15px;
+  bottom: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 14px 17px;
+  background: white;
+  border: 1px solid #eaf0ed;
+  border-radius: 12px;
+
+  box-shadow: 0 12px 35px rgba(27, 63, 50, 0.10);
+}
+
+.zosto-floating-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e0f7eb;
+  color: var(--zosto-green);
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.zosto-floating-card strong {
+  font-size: 11px;
+}
+
+.zosto-floating-card p {
+  margin: 4px 0 0;
+  color: var(--zosto-muted);
+  font-size: 10px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.zosto-about {
+  padding: 90px 22px;
+  text-align: center;
+  background: white;
+}
+
+.zosto-section-label {
+  margin-bottom: 17px;
+
+  color: var(--zosto-green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.zosto-about h2,
+.zosto-features h2,
+.zosto-how-it-works h2,
+.zosto-contact h2 {
+  margin: 0;
+
+  font-size: clamp(30px, 4vw, 45px);
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+.zosto-about > p {
+  max-width: 650px;
+  margin: 22px auto;
+
+  color: var(--zosto-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.zosto-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--zosto-green) !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.zosto-text-link:hover {
+  gap: 15px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.zosto-features {
+  padding: 90px clamp(20px, 6vw, 92px);
+  text-align: center;
+}
+
+.zosto-section-description {
+  margin: 18px 0 38px;
+  color: var(--zosto-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.zosto-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.zosto-feature-card {
+  min-width: 0;
+  min-height: 220px;
+  padding: 26px;
+
+  position: relative;
+  overflow: hidden;
+
+  background: white;
+  border: 1px solid #e9f0ed;
+  border-radius: 15px;
+
+  box-shadow: 0 5px 20px rgba(28, 65, 57, 0.025);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.zosto-feature-card:hover {
+  transform: translateY(-5px);
+  border-color: #c8e9d9;
+  box-shadow: 0 15px 35px rgba(28, 65, 57, 0.07);
+}
+
+.zosto-feature-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf8f1;
+  border-radius: 13px;
+  font-size: 23px;
+}
+
+.zosto-feature-card h3 {
+  margin: 20px 0 10px;
+  font-size: 17px;
+}
+
+.zosto-feature-card p {
+  max-width: 310px;
+  margin: 0;
+
+  color: var(--zosto-muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.zosto-feature-number {
+  position: absolute;
+  right: 17px;
+  bottom: 10px;
+
+  color: #eff5f1;
+  font-size: 42px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.zosto-how-it-works {
+  padding: 90px clamp(20px, 6vw, 92px);
+  text-align: center;
+  background: white;
+}
+
+.zosto-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+
+  max-width: 1050px;
+  margin: 48px auto 0;
+  text-align: left;
+}
+
+.zosto-step {
+  padding: 25px;
+  border-left: 3px solid #bdebd5;
+}
+
+.zosto-step-number {
+  color: var(--zosto-green);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.zosto-step h3 {
+  margin: 16px 0 10px;
+  font-size: 18px;
+}
+
+.zosto-step p {
+  margin: 0;
+  color: var(--zosto-muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.zosto-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  align-items: start;
+  gap: clamp(30px, 6vw, 80px);
+
+  padding: 90px clamp(20px, 8vw, 120px);
+}
+
+.zosto-contact-content > p {
+  max-width: 440px;
+  margin-top: 23px;
+
+  color: var(--zosto-muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.zosto-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  padding: clamp(20px, 3vw, 30px);
+  background: white;
+  border: 1px solid #e8efeb;
+  border-radius: 16px;
+
+  box-shadow: 0 12px 35px rgba(28, 65, 57, 0.045);
+}
+
+.zosto-contact-form label {
+  margin-top: 5px;
+  color: #344653;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.zosto-contact-form input,
+.zosto-contact-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+
+  background: #fbfdfc;
+  border: 1px solid #e1e9e5;
+  border-radius: 8px;
+
+  color: var(--zosto-navy);
+  font-size: 13px;
+}
+
+.zosto-contact-form input {
+  min-height: 44px;
+}
+
+.zosto-contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.zosto-contact-form input::placeholder,
+.zosto-contact-form textarea::placeholder {
+  color: #9ba6a9;
+}
+
+.zosto-contact-form .zosto-btn-primary {
+  align-self: flex-start;
+  margin-top: 9px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.zosto-footer {
+  padding: 35px clamp(20px, 6vw, 92px) 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  background: white;
+  border-top: 1px solid #e9efec;
+}
+
+.zosto-footer > p {
+  color: var(--zosto-muted);
+  font-size: 12px;
+}
+
+.zosto-footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 22px;
 }
 
-.category-button {
-  background: white !important;
-  border: 1px solid #e2e8f0 !important;
-  color: #334155 !important;
-  border-radius: 12px !important;
-  padding: 12px 18px !important;
-  text-transform: none !important;
-  gap: 9px;
-  font-weight: 600 !important;
+.zosto-footer-links a {
+  color: #62716f;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.category-button:hover,
-.category-button.active {
-  background: #eaf0ff !important;
-  border-color: #173c8c !important;
-  color: #173c8c !important;
+.zosto-footer-links a:hover {
+  color: var(--zosto-green);
 }
 
-/* PRODUCTS */
-
-.products-section {
-  margin-top: 50px;
-}
-
-.products-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 25px;
-}
-
-.section-subtitle {
-  color: #64748b;
-  margin-top: 8px !important;
-}
-
-.product-count {
-  color: #64748b;
-  font-size: 14px !important;
-}
-
-.product-card {
-  height: 100%;
-  overflow: hidden;
-  border-radius: 18px !important;
-  border: 1px solid #edf0f5;
-  box-shadow: 0 4px 20px #17255408 !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 30px #17255415 !important;
-}
-
-.product-image {
-  height: 190px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-emoji {
-  font-size: 78px;
-  transition: transform 0.2s ease;
-}
-
-.product-card:hover .product-emoji {
-  transform: scale(1.08);
-}
-
-.product-tag {
-  position: absolute !important;
-  top: 12px;
-  left: 12px;
-  height: 25px !important;
-  background: #ffffffd9 !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-}
-
-.product-content {
-  padding: 18px !important;
-}
-
-.product-category {
-  color: #64748b;
-  font-size: 12px !important;
-  margin-bottom: 5px !important;
-}
-
-.product-name {
-  font-weight: 700 !important;
-  font-size: 16px !important;
-  min-height: 24px;
-}
-
-.product-price {
-  font-weight: 900 !important;
-  font-size: 23px !important;
-  color: #173c8c;
-  margin-top: 12px !important;
-}
-
-.add-cart-btn {
-  margin-top: 15px !important;
-  background: #173c8c !important;
-  border-radius: 10px !important;
-  padding: 10px 5px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  text-transform: none !important;
-}
-
-.add-cart-btn:hover {
-  background: #2857ae !important;
-}
-
-.empty-state {
-  text-align: center;
-  padding: 60px 15px;
-  background: white;
-  border-radius: 18px;
-}
-
-/* PROMOTION */
-
-.promo-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-top: 55px;
-  padding: 35px;
-  border-radius: 20px;
-  background: #e8edff;
-  color: #173c8c;
-}
-
-.promo-emoji {
-  font-size: 65px;
-}
-
-/* FOOTER */
-
-.footer {
-  background: #102a60;
-  color: white;
-  padding: 40px 0 25px;
-}
-
-.footer-logo {
-  font-weight: 900 !important;
-  letter-spacing: -1px;
-}
-
-.footer-text {
-  color: #cbd5e1;
-  margin-top: 8px !important;
-}
-
-.footer-divider {
-  border-color: #ffffff25 !important;
-  margin: 25px 0 !important;
-}
-
-.copyright {
-  color: #cbd5e1;
-  font-size: 13px !important;
-}
-
-/* DRAWERS */
-
-.mobile-drawer {
-  width: min(300px, 85vw);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.drawer-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 16px 20px;
-}
-
-.cart-drawer {
-  width: min(420px, 100vw);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.cart-items {
-  padding: 15px 20px;
-  overflow-y: auto;
-  flex: 1;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.cart-item-emoji {
-  font-size: 35px;
-}
-
-.cart-total {
-  padding: 20px;
-  border-top: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.empty-cart {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 25px;
-  text-align: center;
-}
-
-/* AUTH DIALOG */
-
-.auth-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1500;
-  background: #0f172a99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.auth-dialog {
-  position: relative;
-  background: white;
-  padding: 35px;
+.zosto-footer-bottom {
   width: 100%;
-  max-width: 420px;
-  border-radius: 22px;
-  box-shadow: 0 25px 80px #0003;
+  padding: 20px 0;
+
+  border-top: 1px solid #edf1ef;
+  color: #8a9694;
+  text-align: center;
+  font-size: 11px;
 }
 
-.auth-close {
-  position: absolute !important;
-  right: 15px;
-  top: 15px;
+/* =========================
+   TABLETS & SMALL LAPTOPS
+========================= */
+
+@media (max-width: 1100px) {
+  .zosto-navbar {
+    gap: 15px;
+    padding-inline: 25px;
+  }
+
+  .zosto-nav-links {
+    gap: 17px;
+  }
+
+  .zosto-nav-actions {
+    gap: 10px;
+  }
+
+  .zosto-hero {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 25px;
+    padding-inline: 35px;
+  }
+
+  .zosto-hero h1 {
+    font-size: clamp(39px, 5vw, 54px);
+  }
+
+  .zosto-dashboard {
+    padding: 17px;
+  }
+
+  .zosto-floating-card {
+    left: -5px;
+  }
 }
 
-/* TABLET */
+/* =========================
+   TABLET
+========================= */
 
-@media (max-width: 900px) {
-  .nav-toolbar {
+@media (max-width: 850px) {
+  .zosto-navbar {
+    flex-wrap: wrap;
+  }
+
+  .zosto-nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding-top: 12px;
+    border-top: 1px solid #f0f3f2;
+  }
+
+  .zosto-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    padding: 60px 35px 75px;
+  }
+
+  .zosto-hero-content {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .zosto-hero-description {
+    margin-inline: auto;
+  }
+
+  .zosto-hero-buttons,
+  .zosto-hero-trust {
+    justify-content: center;
+  }
+
+  .zosto-hero-visual {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .zosto-dashboard {
+    max-width: 100%;
+  }
+
+  .zosto-features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .zosto-contact {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .zosto-contact-content {
+    text-align: center;
+  }
+
+  .zosto-contact-content > p {
+    margin-inline: auto;
+  }
+
+  .zosto-contact-form {
+    width: 100%;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .zosto-footer {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .zosto-footer > p {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 560px) {
+  .zosto-navbar {
+    min-height: 68px;
+    padding: 13px 16px;
     gap: 12px;
   }
 
-  .hero {
-    padding: 40px 32px;
+  .zosto-logo {
+    font-size: 24px;
   }
 
-  .hero-art {
-    width: 190px;
-    transform: scale(0.85);
+  .zosto-logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 23px;
   }
 
-  .product-image {
-    height: 160px;
-  }
-
-  .product-content {
-    padding: 14px !important;
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-  .nav-toolbar {
-    min-height: 68px !important;
-    gap: 9px;
-  }
-
-  .logo {
-    font-size: 25px !important;
-    letter-spacing: -1.5px;
-  }
-
-  .nav-search {
-  flex: 1;
-  min-width: 80px;
-  max-width: none;
-  margin: 0;
-}
-
-.location-btn {
-  min-width: 0 !important;
-  padding: 5px !important;
-  font-size: 11px !important;
-}
-
-.location-btn .MuiButton-startIcon {
-  margin-right: 3px;
-  margin-left: 0;
-}
-
-  .nav-search .MuiOutlinedInput-root {
-    height: 40px;
-    font-size: 12px;
-  }
-
-  .nav-search .MuiInputBase-input {
-    padding-left: 0;
-    padding-right: 4px;
-  }
-
-  .nav-search .MuiInputAdornment-root {
-    margin-right: 5px;
-  }
-
-  .login-btn,
-  .signup-btn {
-    display: none !important;
-  }
-
-  .mobile-menu {
-    display: inline-flex !important;
-    padding: 5px !important;
-  }
-
-  .cart-btn {
-    padding: 5px !important;
-  }
-
-  .main-container {
-    padding-top: 18px;
-    padding-bottom: 40px;
-  }
-
-  .hero {
-    min-height: 300px;
-    padding: 30px 22px;
-    border-radius: 20px;
-  }
-
-  .hero-title {
-    font-size: 31px !important;
-    letter-spacing: -1.2px !important;
-  }
-
-  .hero-chip {
-    font-size: 9px !important;
-    margin-bottom: 16px;
-  }
-
-  .hero-description {
-    font-size: 13px;
-    line-height: 1.7 !important;
-  }
-
-  .hero-art {
-    display: none;
-  }
-
-  .hero-button {
-    padding: 10px 17px !important;
-  }
-
-  .category-section {
-    margin-top: 30px;
-  }
-
-  .section-title {
-    font-size: 23px !important;
-  }
-
-  .category-list {
+  .zosto-nav-actions {
     gap: 8px;
-    margin-top: 15px;
   }
 
-  .category-button {
-    padding: 9px 12px !important;
-    font-size: 12px !important;
+  .zosto-language {
+    max-width: 95px;
+    padding: 7px 2px;
+    font-size: 11px;
   }
 
-  .products-section {
-    margin-top: 35px;
-  }
-
-  .products-heading {
-    align-items: flex-start;
-    margin-bottom: 18px;
-  }
-
-  .section-subtitle {
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-  }
-
-  .product-count {
-    font-size: 11px !important;
-    white-space: nowrap;
-    padding-top: 8px;
-  }
-
-  .product-image {
-    height: 125px;
-  }
-
-  .product-emoji {
-    font-size: 53px;
-  }
-
-  .product-tag {
-    top: 7px;
-    left: 7px;
-    height: 21px !important;
-    font-size: 9px !important;
-    padding: 0 6px !important;
-  }
-
-  .product-content {
-    padding: 11px !important;
-  }
-
-  .product-category {
-    font-size: 10px !important;
-  }
-
-  .product-name {
-    font-size: 13px !important;
-  }
-
-  .product-price {
-    font-size: 19px !important;
-    margin-top: 8px !important;
-  }
-
-  .add-cart-btn {
-    margin-top: 10px !important;
-    min-height: 36px;
-    font-size: 10px !important;
-  }
-
-  .add-cart-btn .MuiButton-startIcon {
-    margin-right: 4px;
-    margin-left: 0;
-  }
-
-  .promo-banner {
-    margin-top: 35px;
-    padding: 23px 18px;
-    border-radius: 16px;
-  }
-
-  .promo-banner .MuiTypography-h5 {
-    font-size: 18px;
-  }
-
-  .promo-banner .MuiTypography-body1 {
+  .zosto-login-link {
     font-size: 12px;
-    line-height: 1.6;
   }
 
-  .promo-emoji {
-    font-size: 42px;
+  .zosto-nav-cta {
+    min-height: 36px;
+    padding: 9px 11px;
+    font-size: 11px;
   }
 
-  .footer {
-    padding: 30px 0 20px;
+  .zosto-nav-links {
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 11px;
   }
 
-  .auth-dialog {
-    padding: 28px 22px;
-  }
-}
-
-/* VERY SMALL MOBILE */
-
-@media (max-width: 360px) {
-  .nav-toolbar {
-    gap: 5px;
+  .zosto-nav-links a {
+    font-size: 12px;
   }
 
-  .logo {
-    font-size: 22px !important;
+  .zosto-hero {
+    padding: 43px 18px 55px;
+    gap: 35px;
   }
 
-  .nav-search .MuiOutlinedInput-root {
+  .zosto-badge {
+    max-width: 100%;
+    margin-bottom: 22px;
+    padding: 8px 10px;
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+
+  .zosto-hero h1 {
+    font-size: clamp(37px, 10vw, 49px);
+    letter-spacing: -1.8px;
+  }
+
+  .zosto-hero-description {
+    margin: 19px 0 23px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .zosto-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .zosto-btn-primary,
+  .zosto-btn-secondary {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .zosto-hero-trust {
+    gap: 7px;
     font-size: 10px;
   }
 
-  .cart-btn,
-  .mobile-menu {
-    padding: 3px !important;
+  .zosto-trust-divider {
+    margin-inline: 3px;
   }
 
-  .product-image {
-    height: 105px;
+  .zosto-hero-visual {
+    padding: 0;
   }
 
-  .product-content {
-    padding: 9px !important;
+  .zosto-dashboard {
+    padding: 14px;
+    border-radius: 14px;
   }
 
-  .add-cart-btn {
-    font-size: 9px !important;
+  .zosto-dashboard-header {
+    padding-bottom: 14px;
+  }
+
+  .zosto-dashboard-welcome {
+    padding: 15px 0 13px;
+  }
+
+  .zosto-dashboard-welcome h3 {
+    font-size: 14px;
+  }
+
+  .zosto-dashboard-welcome p {
+    font-size: 10px;
+  }
+
+  .zosto-stats-grid {
+    gap: 9px;
+  }
+
+  .zosto-stat-card {
+    padding: 11px;
+  }
+
+  .zosto-stat-top {
+    font-size: 9px;
+  }
+
+  .zosto-stat-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .zosto-stat-card h2 {
+    font-size: 20px;
+  }
+
+  .zosto-stat-card small {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .zosto-dashboard-bottom {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .zosto-chart-card,
+  .zosto-alert-card {
+    padding: 13px;
+  }
+
+  .zosto-chart {
+    height: 90px;
+  }
+
+  .zosto-floating-card {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: fit-content;
+    max-width: 100%;
+    margin: 12px auto 0;
+    padding: 11px 13px;
+  }
+
+  .zosto-decoration-one {
+    width: 80px;
+    height: 80px;
+    top: -15px;
+    right: -5px;
+  }
+
+  .zosto-decoration-two {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    left: -10px;
+  }
+
+  .zosto-about,
+  .zosto-features,
+  .zosto-how-it-works {
+    padding: 65px 20px;
+  }
+
+  .zosto-about h2,
+  .zosto-features h2,
+  .zosto-how-it-works h2,
+  .zosto-contact h2 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+
+  .zosto-about > p {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .zosto-section-description {
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+
+  .zosto-features-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .zosto-feature-card {
+    min-height: 195px;
+    padding: 22px;
+  }
+
+  .zosto-feature-card h3 {
+    font-size: 16px;
+  }
+
+  .zosto-feature-card p {
+    font-size: 13px;
+  }
+
+  .zosto-steps-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+    margin-top: 35px;
+  }
+
+  .zosto-step {
+    padding: 20px;
+  }
+
+  .zosto-contact {
+    padding: 65px 18px;
+  }
+
+  .zosto-contact-form {
+    padding: 20px;
+  }
+
+  .zosto-footer {
+    padding: 30px 18px 0;
+    gap: 15px;
+  }
+
+  .zosto-footer-links {
+    justify-content: center;
+    gap: 17px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .zosto-home *,
+  .zosto-home *::before,
+  .zosto-home *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

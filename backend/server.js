@@ -16,13 +16,6 @@ app.get("/", (req, res) => {
 });
 
 // Sample products API
-app.get("/api/products", (req, res) => {
-  res.json([
-    { id: 1, name: "Rice 25 kg", price: 1400 },
-    { id: 2, name: "Pens Box", price: 120 },
-    { id: 3, name: "Notebook Pack", price: 180 },
-  ]);
-});
 
 app.listen(PORT, () => {
   console.log(`Zosto backend running at http://localhost:${PORT}`);
