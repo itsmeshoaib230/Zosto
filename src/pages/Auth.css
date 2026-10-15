@@ -168,3 +168,17 @@
 .auth-card .google-button:hover {
   background: #f8fafb;
 }
+
+
+/* Account type selection */
+
+#signup-role {
+  width: 100%;
+  box-sizing: border-box;
+  background: inherit;
+  color: inherit;
+  font: inherit;
+  border: inherit;
+  border-radius: inherit;
+  padding: inherit;
+}

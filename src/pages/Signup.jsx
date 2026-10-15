@@ -12,6 +12,9 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("shopkeeper");
+  const [storeName, setStoreName] = useState("");
+  const [storeLocation, setStoreLocation] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -31,6 +34,16 @@ export default function Signup() {
 
       await updateProfile(result.user, {
         displayName: name.trim(),
+      });
+
+      // MongoDB integration will be added next.
+      console.log("Signup details:", {
+        name: name.trim(),
+        email: email.trim(),
+        role,
+        storeName: role === "shopkeeper" ? storeName.trim() : "",
+        storeLocation:
+          role === "shopkeeper" ? storeLocation.trim() : "",
       });
 
       navigate("/login");
@@ -55,6 +68,18 @@ export default function Signup() {
         <h1>Create Your Zosto Account</h1>
         <p>Start managing your business smarter.</p>
 
+        <label htmlFor="signup-role">Account type</label>
+        <select
+          id="signup-role"
+          className="auth-input"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          required
+        >
+          <option value="shopkeeper">Shopkeeper</option>
+          <option value="deliveryAgent">Delivery Agent</option>
+        </select>
+
         <label htmlFor="signup-name">Full name</label>
         <input
           id="signup-name"
@@ -65,6 +90,32 @@ export default function Signup() {
           autoComplete="name"
           required
         />
+
+        {role === "shopkeeper" && (
+          <>
+            <label htmlFor="store-name">Store name</label>
+            <input
+              id="store-name"
+              type="text"
+              placeholder="Enter your store name"
+              value={storeName}
+              onChange={(e) => setStoreName(e.target.value)}
+              required
+            />
+
+            <label htmlFor="store-location">
+              Store location / address
+            </label>
+            <input
+              id="store-location"
+              type="text"
+              placeholder="Enter your store address"
+              value={storeLocation}
+              onChange={(e) => setStoreLocation(e.target.value)}
+              required
+            />
+          </>
+        )}
 
         <label htmlFor="signup-email">Email address</label>
         <input
