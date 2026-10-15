@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -70,13 +71,15 @@ function Home() {
             <option value="Hindi">हिन्दी</option>
           </select>
 
-          <a href="/login/shopkeeper" className="zosto-login-link">
-            Login
-          </a>
+          
+        <Link to="/login" className="zosto-login-link">
+        Login
+        </Link>
 
-          <a href="/signup" className="zosto-nav-cta">
-            Get Started
-          </a>
+
+          <Link to="/signup" className="zosto-nav-cta">
+           Get Started
+           </Link>
         </div>
       </header>
 

@@ -1,0 +1,170 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.auth-page {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f7fafc;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 32px;
+  border: 1px solid #e9eef1;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgba(16, 24, 40, 0.08);
+}
+
+.auth-card h1 {
+  margin: 0 0 8px;
+  color: #101828;
+  font-size: 27px;
+  line-height: 1.25;
+}
+
+.auth-card > p {
+  margin: 0 0 22px;
+  color: #697586;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.auth-card label {
+  display: block;
+  margin: 14px 0 7px;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-card input {
+  display: block;
+  width: 100%;
+  min-height: 47px;
+  padding: 12px 13px;
+  border: 1px solid #dfe5e9;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #101828;
+  font-size: 14px;
+}
+
+.auth-card input:focus {
+  border-color: #079b70;
+  box-shadow: 0 0 0 3px rgba(7, 155, 112, 0.1);
+}
+
+.auth-card button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: #079b70;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-card button:hover {
+  background: #07855f;
+}
+
+.auth-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.auth-card .auth-error {
+  margin: 12px 0 0;
+  color: #c62828;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.auth-card .auth-switch {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+.auth-switch a {
+  color: #079b70;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 14px;
+  }
+
+  .auth-card {
+    padding: 24px 19px;
+    border-radius: 18px;
+  }
+
+  .auth-card h1 {
+    font-size: 23px;
+  }
+}
+
+
+.auth-card .auth-forgot {
+  display: block;
+  width: auto;
+  min-height: auto;
+  margin: 10px 0 0 auto;
+  padding: 0;
+  background: transparent;
+  color: #079b70;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.auth-card .auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 17px 0;
+}
+
+.auth-divider span {
+  flex: 1;
+  height: 1px;
+  background: #e1e5e9;
+}
+
+.auth-card .auth-divider p {
+  margin: 0;
+  color: #697586;
+  font-size: 13px;
+}
+
+.auth-card .google-button {
+  margin-top: 0;
+  border: 1px solid #dfe5e9;
+  background: white;
+  color: #101828;
+}
+
+.auth-card .google-button:hover {
+  background: #f8fafb;
+}
