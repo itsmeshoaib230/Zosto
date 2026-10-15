@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard.jsx";
 import { auth } from "./firebase/firebase";
+import ChangeLocation from "./pages/ChangeLocation";
+import Inventory from "./pages/Inventory";
 
 function ProtectedDashboard() {
   const [user, setUser] = useState(undefined);
@@ -28,6 +30,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/change-location"
+          element={<ChangeLocation />}
+        />
+        <Route path="/inventory" element={<Inventory />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
