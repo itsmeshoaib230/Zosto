@@ -1,3 +1,5 @@
+const { initializeApp, cert } = require("firebase-admin/app");
+const { getAuth } = require("firebase-admin/auth");
 
 const express = require("express");
 const cors = require("cors");
@@ -20,8 +22,9 @@ const serviceAccount = JSON.parse(
 );
 
 
-admin.initializeApp({
-  credential: require("firebase-admin").credential.cert(serviceAccount),
+
+initializeApp({
+  credential: cert(serviceAccount),
 });
 
 
@@ -38,7 +41,7 @@ async function verifyFirebaseToken(req, res, next) {
   const token = authHeader.split(" ")[1];
 
   try {
-    const decodedToken = await admin.auth().verifyIdToken(token);
+    const decodedToken = await getAuth().verifyIdToken(token);
     req.authUser = decodedToken;
     next();
   } catch (error) {
