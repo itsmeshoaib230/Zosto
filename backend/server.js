@@ -1,5 +1,7 @@
+
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
@@ -15,8 +17,16 @@ app.get("/", (req, res) => {
   });
 });
 
-// Sample products API
-
-app.listen(PORT, () => {
-  console.log(`Zosto backend running at http://localhost:${PORT}`);
-});
+// MongoDB Atlas connection
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("MongoDB Atlas connected successfully!");
+    
+    app.listen(PORT, () => {
+      console.log(`Zosto backend running at http://localhost:${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("MongoDB connection failed:", error.message);
+  });
