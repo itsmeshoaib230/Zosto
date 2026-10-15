@@ -4,11 +4,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 import Home from "./Home";
-import Login from "./pages/Login.jsx";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard.jsx";
 import { auth } from "./firebase/firebase";
 
-function ProtectedHome() {
+function ProtectedDashboard() {
   const [user, setUser] = useState(undefined);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function ProtectedHome() {
     return <p>Loading Zosto...</p>;
   }
 
-  return user ? <Home /> : <Navigate to="/login" replace />;
+  return user ? <Dashboard /> : <Navigate to="/login" replace />;
 }
 
 export default function App() {
@@ -30,7 +31,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<ProtectedHome />} />
+        <Route path="/dashboard" element={<ProtectedDashboard />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

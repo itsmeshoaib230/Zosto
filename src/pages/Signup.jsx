@@ -33,7 +33,7 @@ export default function Signup() {
         displayName: name.trim(),
       });
 
-      navigate("/home");
+      navigate("/login");
     } catch (err) {
       setError(
         err.code === "auth/email-already-in-use"

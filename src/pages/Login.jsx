@@ -30,7 +30,7 @@ export default function Login() {
         password
       );
 
-      navigate("/home");
+      navigate("/dashboard");
     } catch (err) {
       setError(
         err.code === "auth/invalid-credential"
@@ -48,7 +48,7 @@ export default function Login() {
 
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/home");
+      navigate("/Dashboard");
     } catch (err) {
       setError("Google login failed. Please try again.");
     } finally {
