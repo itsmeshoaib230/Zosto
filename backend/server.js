@@ -82,8 +82,13 @@ app.get("/api/health", (req, res) => {
 });
 
 // Signup details API
-app.post("/api/users", async (req, res) => {
+// app.post("/api/users", async (req, res) => {
+  app.post("/api/users", async (req, res) => {
+  console.log("SIGNUP API HIT", req.body.email);
+
   try {
+    // Keep all your existing signup code here.
+  // try {
     const { name, email, role, storeName, storeLocation, firebaseUid } =
       req.body;
 
