@@ -75,6 +75,12 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/api/health", (req, res) => {
+  res.json({
+    message: "Zosto API routes are active",
+  });
+});
+
 // Signup details API
 app.post("/api/users", async (req, res) => {
   try {
