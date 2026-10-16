@@ -19,6 +19,7 @@ import Profile from "./pages/Profile";
 import Customer from "./pages/Customer";
 import Suppliers from "./pages/Suppliers";
 import Settings from "./pages/Settings";
+import AddProduct from "./pages/AddProduct";
 
 function ProtectedDashboard() {
   const [user, setUser] = useState(undefined);
@@ -39,6 +40,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/add-product" element={<AddProduct />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/suppliers" element={<Suppliers />} />
         <Route path="/customers" element={<Customer />} />

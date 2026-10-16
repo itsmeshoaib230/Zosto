@@ -1,0 +1,415 @@
+.add-product-page {
+  padding: 18px 24px 24px;
+  color: #102344;
+  background: #f4f8fd;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.add-product-page * {
+  box-sizing: border-box;
+}
+
+.ap-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #637797;
+  font-size: 14px;
+}
+
+.ap-breadcrumb button {
+  border: 0;
+  background: none;
+  color: #637797;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.ap-header h1 {
+  font-size: 29px;
+  margin: 0 0 7px;
+  font-weight: 800;
+}
+
+.ap-header p,
+.ap-card-heading p {
+  margin: 0;
+  color: #637797;
+  font-size: 15px;
+}
+
+.ap-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: start;
+  gap: 14px;
+}
+
+.ap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.ap-card {
+  background: #fff;
+  border: 1px solid #eaf0f8;
+  border-radius: 13px;
+  padding: 20px;
+  box-shadow: 0 3px 14px rgba(28, 68, 120, 0.035);
+  min-width: 0;
+}
+
+.ap-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 24px;
+}
+
+.ap-card-heading h2 {
+  font-size: 18px;
+  margin: 0 0 5px;
+  font-weight: 750;
+}
+
+.ap-heading-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ap-heading-icon.blue {
+  color: #0875ff;
+  background: #e8f3ff;
+}
+
+.ap-heading-icon.green {
+  color: #0ba66b;
+  background: #e1f9ed;
+}
+
+.ap-heading-icon.pink {
+  color: #dc28a6;
+  background: #fff0f8;
+}
+
+.ap-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+.ap-fields.ap-three-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ap-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #102344;
+  font-size: 14px;
+  min-width: 0;
+}
+
+.ap-field b {
+  display: inline;
+  color: #ff344d;
+}
+
+.ap-field input,
+.ap-field select,
+.ap-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid #d4dfed;
+  border-radius: 8px;
+  background: #fbfcfe;
+  color: #102344;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ap-field input,
+.ap-field select {
+  height: 44px;
+}
+
+.ap-field textarea {
+  resize: vertical;
+  min-height: 76px;
+}
+
+.ap-field input:focus,
+.ap-field select:focus,
+.ap-field textarea:focus {
+  border-color: #0875ff;
+  box-shadow: 0 0 0 3px rgba(8, 117, 255, 0.09);
+}
+
+.ap-field input::placeholder,
+.ap-field textarea::placeholder {
+  color: #8293b1;
+}
+
+.ap-field small {
+  color: #dc263e;
+  font-size: 12px;
+}
+
+.ap-full {
+  grid-column: 1 / -1;
+}
+
+.ap-upload-area {
+  width: 100%;
+  min-height: 168px;
+  border: 1.5px dashed #bcd2f3;
+  border-radius: 10px;
+  background: #f9fbff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #102344;
+  cursor: pointer;
+}
+
+.ap-upload-area:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.ap-upload-area > span:not(.ap-upload-icon) {
+  color: #637797;
+  font-size: 13px;
+}
+
+.ap-upload-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #e8f3ff;
+  color: #0875ff;
+  font-size: 28px;
+}
+
+.ap-image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.ap-image-preview,
+.ap-add-image {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #d4dfed;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ap-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: white;
+}
+
+.ap-image-preview button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: #102344;
+  color: white;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.ap-add-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff;
+  color: #0875ff;
+  cursor: pointer;
+}
+
+.ap-add-image span {
+  font-size: 32px;
+}
+
+.ap-hint {
+  color: #7183a0;
+  font-size: 12px;
+}
+
+.ap-featured {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 24px;
+  font-size: 14px;
+}
+
+.ap-featured input {
+  width: 17px;
+  height: 17px;
+  accent-color: #0875ff;
+  margin-top: 2px;
+}
+
+.ap-featured span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ap-featured small {
+  color: #637797;
+  line-height: 1.5;
+}
+
+.ap-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #edf1f7;
+  margin-top: 22px;
+  padding-top: 18px;
+}
+
+.ap-outline-button,
+.ap-primary-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ap-outline-button {
+  border: 1px solid #0875ff;
+  color: #0875ff;
+  background: #fff;
+}
+
+.ap-primary-button {
+  border: 1px solid #0875ff;
+  color: white;
+  background: #0875ff;
+}
+
+.ap-primary-button:hover {
+  background: #005ce6;
+}
+
+.ap-primary-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.ap-message {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.ap-message.success {
+  color: #08784d;
+  background: #e5f9ef;
+}
+
+.ap-message.warning {
+  color: #a65a00;
+  background: #fff4df;
+}
+
+@media (max-width: 1100px) {
+  .ap-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ap-fields.ap-three-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .add-product-page {
+    padding: 14px;
+  }
+
+  .ap-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ap-card {
+    padding: 15px;
+  }
+
+  .ap-fields,
+  .ap-fields.ap-three-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px 12px;
+  }
+
+  .ap-form-actions {
+    flex-wrap: wrap;
+  }
+
+  .ap-outline-button,
+  .ap-primary-button {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ap-fields,
+  .ap-fields.ap-three-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .ap-full {
+    grid-column: auto;
+  }
+}

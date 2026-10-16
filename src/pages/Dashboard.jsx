@@ -48,6 +48,7 @@ const navigationItems = [
     { label: "Suppliers", icon: <LocalShipping /> },
     { label: "Profile", icon: <Person /> },
     { label: "Settings", icon: <Settings /> },
+    // {label:"Add Product", icon:<AddProduct/>},
 ];
 
 const lowStockItems = [
@@ -739,20 +740,19 @@ export default function Dashboard() {
                     ))}
                 </nav>
 
+
                 <button
                     className="add-product-btn"
                     type="button"
                     onClick={() => {
                         closeSidebar();
-                        setNotice({
-                            title: "Add Product",
-                            message: "Connect this button to your existing Add Product form.",
-                        });
+                        navigate("/add-product");
                     }}
                 >
                     <Add />
                     <span>Add Product</span>
                 </button>
+
             </aside>
 
             {/* MOBILE SIDEBAR BACKDROP */}
