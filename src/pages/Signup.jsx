@@ -1,13 +1,10 @@
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    updateProfile,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
 } from "firebase/auth";
 import { useState } from "react";
-import {
-    createUserWithEmailAndPassword,
-    updateProfile,
-} from "firebase/auth";
+
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebase";
 import "./Auth.css";

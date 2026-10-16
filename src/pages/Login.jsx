@@ -6,8 +6,6 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-
-import { Link, useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../firebase/firebase";
 import "./Auth.css";
 
