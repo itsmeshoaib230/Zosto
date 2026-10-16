@@ -10,7 +10,7 @@ import { auth, googleProvider } from "../firebase/firebase";
 import "./Auth.css";
 
 export default function Login() {
-  const location = useLocation();
+  // const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

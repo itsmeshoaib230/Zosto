@@ -100,11 +100,7 @@ const response = await fetch(`${API_URL}/api/users`, {
         }
 
         // Profile saved, or already exists in MongoDB.
-        navigate("/login", {
-            state: {
-                message: "Account is ready. Please log in.",
-            },
-        });
+        navigate("/login");
     } catch (err) {
         console.error("Signup error:", err);
 
