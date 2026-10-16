@@ -70,19 +70,26 @@ async function handleSignup(e) {
             firebaseUser = result.user;
         }
 
-        const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/users`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    ...signupData,
-                    firebaseUid: firebaseUser.uid,
-                }),
-            }
-        );
+        // const API_URL = import.meta.env.VITE_API_URL.replace(/\/+$/, "");
+
+
+const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+
+if (!API_URL) {
+    throw new Error("VITE_API_URL is not configured in Netlify.");
+}
+
+const response = await fetch(`${API_URL}/api/users`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        ...signupData,
+        firebaseUid: firebaseUser.uid,
+    }),
+});
+
 
         const data = await response.json();
 
