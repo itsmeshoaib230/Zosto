@@ -644,23 +644,35 @@ export default function Dashboard() {
     const [notice, setNotice] = useState(null);
 
     const closeSidebar = () => setSidebarOpen(false);
+
+
     const handleNavigation = (label) => {
         setActivePage(label);
         closeSidebar();
         setNotice(null);
 
-        if (label === "My Inventory") {
-            navigate("/inventory");
-            return;
-        }
+        const routes = {
+            Dashboard: "/dashboard",
+            "My Inventory": "/inventory",
+            "Expiry Alerts": "/expiry",
+            "Stock Exchange": "/stock-exchange",
+            Orders: "/orders",
+            "Sales Analytics": "/sales-analysis",
+            "AI Suggestions": "/ai-suggestions",
+            Customers: "/customers",
+            Suppliers: "/suppliers",
+            Profile: "/profile",
+            Settings: "/settings",
+        };
 
-        if (label !== "Dashboard") {
-            setNotice({
-                title: label,
-                message: `Connect your existing ${label} page or route here.`,
-            });
+        const path = routes[label];
+
+        if (path) {
+            navigate(path);
         }
     };
+
+
 
 
     const handleRestock = (item) => {
@@ -703,7 +715,7 @@ export default function Dashboard() {
                     </div>
 
                     <h2>
-                        Stock<span>Wise</span>
+                        Zos<span>to</span>
                     </h2>
 
                     <button
@@ -1077,7 +1089,7 @@ export default function Dashboard() {
                     )}
 
                     <footer className="dashboard-footer">
-                        <span>StockWise Inventory Management</span>
+                        <span>Zosto Inventory Management</span>
                         <span>Smart inventory. Better business.</span>
                     </footer>
                 </main>

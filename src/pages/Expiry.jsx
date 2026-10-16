@@ -113,7 +113,6 @@ export default function Expiry() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
-  const [showAll, setShowAll] = useState(false);
 
   const summary = useMemo(() => {
     const active = items.filter((item) => !item.sold);
@@ -158,9 +157,7 @@ export default function Expiry() {
       });
   }, [items, search, category, status, sortOrder]);
 
-  const displayedItems = showAll
-    ? filteredItems
-    : filteredItems.slice(0, 7);
+  const displayedItems = filteredItems;
 
   const updateForm = (field, value) => {
     setForm((previous) => ({ ...previous, [field]: value }));
@@ -262,13 +259,6 @@ export default function Expiry() {
           </div>
         </div>
 
-        <button
-          className="expiry-view-all"
-          onClick={() => setShowAll((previous) => !previous)}
-          type="button"
-        >
-          {showAll ? "Show Less ↑" : "View All →"}
-        </button>
       </header>
 
       <section className="expiry-summary">
@@ -583,7 +573,7 @@ export default function Expiry() {
       </section>
 
       <footer className="expiry-footer">
-        Showing {displayedItems.length} of {filteredItems.length} items
+        Showing {displayedItems.length} items
       </footer>
     </main>
   );

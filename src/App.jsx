@@ -11,6 +11,14 @@ import { auth } from "./firebase/firebase";
 import ChangeLocation from "./pages/ChangeLocation";
 import Inventory from "./pages/Inventory";
 import Expiry from "./pages/Expiry";
+import StockExchange from "./pages/StockExchange";
+import Orders from "./pages/Orders";
+import SalesAnalysis from "./pages/SalesAnalysis";
+import AiSuggestions from "./pages/AiSuggestions";
+import Profile from "./pages/Profile";
+import Customer from "./pages/Customer";
+import Suppliers from "./pages/Suppliers";
+import Settings from "./pages/Settings";
 
 function ProtectedDashboard() {
   const [user, setUser] = useState(undefined);
@@ -31,6 +39,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/suppliers" element={<Suppliers />} />
+        <Route path="/customers" element={<Customer />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/ai-suggestions" element={<AiSuggestions />} />
+        <Route path="/sales-analysis" element={<SalesAnalysis />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/stock-exchange" element={<StockExchange />} />
         <Route
           path="/change-location"
           element={<ChangeLocation />}
