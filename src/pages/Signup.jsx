@@ -1,4 +1,8 @@
-
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile,
+} from "firebase/auth";
 import { useState } from "react";
 import {
     createUserWithEmailAndPassword,
@@ -21,12 +25,26 @@ export default function Signup() {
     const navigate = useNavigate();
 
 
-    async function handleSignup(e) {
-        e.preventDefault();
-        setError("");
-        setLoading(true);
+    
+async function handleSignup(e) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-        let firebaseUser = null;
+    const signupData = {
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        role,
+        ...(role === "shopkeeper"
+            ? {
+                storeName: storeName.trim(),
+                storeLocation: storeLocation.trim(),
+            }
+            : {}),
+    };
+
+    try {
+        let firebaseUser;
 
         try {
             const result = await createUserWithEmailAndPassword(
@@ -40,53 +58,71 @@ export default function Signup() {
             await updateProfile(firebaseUser, {
                 displayName: name.trim(),
             });
-
-            const signupData = {
-                name: name.trim(),
-                email: email.trim(),
-                role,
-                firebaseUid: firebaseUser.uid,
-            };
-
-            if (role === "shopkeeper") {
-                signupData.storeName = storeName.trim();
-                signupData.storeLocation = storeLocation.trim();
-            }
-
-            const response = await fetch(
-                `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/users`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(signupData),
-                }
-            );
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || "Could not save signup details.");
-            }
-
-            navigate("/login");
         } catch (err) {
-            console.error("Signup error:", err);
+            if (err.code !== "auth/email-already-in-use") {
+                throw err;
+            }
 
-            setError(
-                err.code === "auth/email-already-in-use"
-                    ? "This email is already registered."
-                    : err.code === "auth/weak-password"
-                        ? "Choose a stronger password."
-                        : err.code === "auth/invalid-email"
-                            ? "Enter a valid email address."
-                            : err.message || "Signup failed. Please try again."
+            // Account exists from a previous incomplete signup.
+            const result = await signInWithEmailAndPassword(
+                auth,
+                email.trim(),
+                password
             );
-        } finally {
-            setLoading(false);
+
+            firebaseUser = result.user;
         }
+
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/users`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ...signupData,
+                    firebaseUid: firebaseUser.uid,
+                }),
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok && response.status !== 409) {
+            throw new Error(
+                data.message || "Could not save signup details."
+            );
+        }
+
+        // Profile saved, or already exists in MongoDB.
+        navigate("/login", {
+            state: {
+                message: "Account is ready. Please log in.",
+            },
+        });
+    } catch (err) {
+        console.error("Signup error:", err);
+
+        if (err.code === "auth/invalid-credential") {
+            setError(
+                "This email already has an account. Enter the correct password or log in."
+            );
+        } else if (err.code === "auth/weak-password") {
+            setError("Choose a stronger password.");
+        } else if (err.code === "auth/invalid-email") {
+            setError("Enter a valid email address.");
+        } else {
+            setError(
+                err.message ||
+                "Unable to complete signup. Please try again."
+            );
+        }
+    } finally {
+        setLoading(false);
     }
+}
+
 
 
     return (

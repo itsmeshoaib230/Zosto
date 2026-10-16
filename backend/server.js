@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 
-const admin = require("firebase-admin");
+// const admin = require("firebase-admin");
 const fs = require("fs");
 const path = require("path");
 

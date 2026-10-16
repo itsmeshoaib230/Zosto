@@ -5,12 +5,14 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { Link, useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../firebase/firebase";
 import "./Auth.css";
 
 export default function Login() {
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -133,6 +135,11 @@ export default function Login() {
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>
       </form>
+      {location.state?.message && (
+    <p className="auth-success">
+        {location.state.message}
+    </p>
+)}
     </main>
   );
 }
