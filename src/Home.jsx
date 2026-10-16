@@ -48,7 +48,7 @@ function Home() {
       {/* Navbar */}
       <header className="zosto-navbar">
         <a href="#home" className="zosto-logo">
-          <span className="zosto-logo-icon">▦</span>
+          {/* <span className="zosto-logo-icon">▦</span> */}
           <span>
             Zos<span className="zosto-logo-highlight">to</span>
           </span>
