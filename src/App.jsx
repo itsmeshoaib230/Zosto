@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import { auth } from "./firebase/firebase";
 import ChangeLocation from "./pages/ChangeLocation";
 import Inventory from "./pages/Inventory";
+import Expiry from "./pages/Expiry";
 
 function ProtectedDashboard() {
   const [user, setUser] = useState(undefined);
@@ -34,6 +35,7 @@ export default function App() {
           path="/change-location"
           element={<ChangeLocation />}
         />
+        <Route path="/expiry" element={<Expiry />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
