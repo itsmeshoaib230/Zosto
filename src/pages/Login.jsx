@@ -133,11 +133,6 @@ export default function Login() {
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>
       </form>
-      {location.state?.message && (
-    <p className="auth-success">
-        {location.state.message}
-    </p>
-)}
     </main>
   );
 }
