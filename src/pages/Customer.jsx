@@ -1,6 +1,7 @@
 
 import React, { useMemo, useState } from "react";
 import "./Customer.css";
+import BackToDashboard from "../components/BackToDashboard";
 
 const initialCustomers = [
   { id: "CUS-001", name: "Suresh Babu", phone: "+91 99887 66554", email: "suresh@gmail.com", location: "Nellore", orders: 28, spent: 12450, lastOrder: "14 Oct 2026", status: "Active" },

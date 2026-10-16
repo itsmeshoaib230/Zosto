@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
-
+import BackToDashboard from "../components/BackToDashboard";
 
 import {
     Menu,

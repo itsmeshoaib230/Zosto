@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import BackToDashboard from "../components/BackToDashboard";
+
 import {
   LocationOn,
   Save,

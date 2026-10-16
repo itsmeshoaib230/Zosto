@@ -1,6 +1,7 @@
 
 import React, { useMemo, useState } from "react";
 import "./AiSuggestions.css";
+import BackToDashboard from "../components/BackToDashboard";
 
 const initialRestockItems = [
   { id: 1, name: "Milk Packet (1L)", emoji: "🥛", stock: 10, demand: 60, order: 50, reason: "High demand, low stock", color: "red" },

@@ -1,6 +1,7 @@
 
 import React, { useMemo, useState } from "react";
 import "./StockExchange.css";
+import BackToDashboard from "../components/BackToDashboard";
 
 const initialTransactions = [
   {

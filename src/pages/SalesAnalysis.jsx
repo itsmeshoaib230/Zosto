@@ -1,6 +1,7 @@
 
 import React, { useMemo, useState } from "react";
 import "./SalesAnalysis.css";
+import BackToDashboard from "../components/BackToDashboard";
 
 const salesTrend = [
   800, 1300, 950, 1550, 1320, 1720, 2080, 2450,

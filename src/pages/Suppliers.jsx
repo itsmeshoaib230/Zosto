@@ -242,9 +242,23 @@ export default function Suppliers() {
       <header className="suppliers-header">
         <div className="suppliers-heading">
           <div className="suppliers-heading-icon">🚚</div>
-          <div>
-            <h1>Suppliers</h1>
-            <p>Manage your suppliers, track purchases and maintain strong supplier relationships.</p>
+          <div className="page-title-group">
+            <div className="suppliers-title-block">
+              <button
+                type="button"
+                className="suppliers-back-button"
+                onClick={() => window.history.back()}
+                aria-label="Go back to the previous page"
+                title="Back to Dashboard"
+              >
+                <span className="suppliers-back-arrow" aria-hidden="true">←</span>
+                <span>Back to Dashboard</span>
+              </button>
+              <div>
+                <h1>Suppliers</h1>
+                <p>Manage your suppliers, track purchases and maintain strong supplier relationships.</p>
+              </div>
+            </div>
           </div>
         </div>
 

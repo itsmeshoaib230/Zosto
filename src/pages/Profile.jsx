@@ -1,6 +1,7 @@
 
 import React, { useRef, useState } from "react";
 import "./Profile.css";
+import BackToDashboard from "../components/BackToDashboard";
 
 const initialProfile = {
   fullName: "Ramesh",

@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import "./Settings.css";
+import BackToDashboard from "../components/BackToDashboard";
 
 const initialSettings = {
   storeName: "Ramesh Stores",
