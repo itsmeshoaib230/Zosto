@@ -140,7 +140,7 @@ const response = await fetch(`${API_URL}/api/users`, {
                     required
                 >
                     <option value="shopkeeper">Shopkeeper</option>
-                    <option value="deliveryAgent">Delivery Agent</option>
+                   
                 </select>
 
                 <label htmlFor="signup-name">Full name</label>
