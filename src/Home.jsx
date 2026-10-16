@@ -1,4 +1,5 @@
 import React from "react";
+// import "./pages/Dashboard.css"
 import "./Home.css";
 import { Link } from "react-router-dom";
 
@@ -71,15 +72,15 @@ function Home() {
             <option value="Hindi">हिन्दी</option>
           </select>
 
-          
-        <Link to="/login" className="zosto-login-link">
-        Login
-        </Link>
+
+          <Link to="/login" className="zosto-login-link">
+            Login
+          </Link>
 
 
           <Link to="/signup" className="zosto-nav-cta">
-           Get Started
-           </Link>
+            Get Started
+          </Link>
         </div>
       </header>
 
@@ -204,9 +205,8 @@ function Home() {
                   {[35, 55, 42, 75, 50, 90, 68].map((height, index) => (
                     <div className="zosto-chart-column" key={index}>
                       <div
-                        className={`zosto-chart-bar ${
-                          index === 5 ? "zosto-chart-bar-highlight" : ""
-                        }`}
+                        className={`zosto-chart-bar ${index === 5 ? "zosto-chart-bar-highlight" : ""
+                          }`}
                         style={{ height: `${height}%` }}
                       ></div>
                     </div>
