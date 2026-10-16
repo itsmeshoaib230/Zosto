@@ -318,5 +318,4 @@ persistent storage.
 
 ## License
 
-No license has been specified yet. Add a `LICENSE` file and update this
-section before distributing the project for reuse.
+No license has been specified yet.
